@@ -20,13 +20,21 @@ jobs:
 
         # Gradle test를 실행한다
     - name: Test with Gradle
-      run: ./gradlew --info test
+      run: |
+        chmod +x ./gradlew
+        ./gradlew --info test
 
-    # 2. Spring Boot 애플리케이션 빌드
+    # 2. Spring Boot 애플리케이션 빌드(action library 사용)
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
         arguments: clean bootJar
+
+    # 2. Spring Boot 애플리케이션 빌드(직접적으로 사용)
+    #- name: Build with Gradle
+    #  run: |  # Shell 에서 여러 개의 명령어를 실행할 때 사용하는 것
+    #    chmod +x ./gradlew
+    #    ./gradlew build
 
     # 3. Docker 이미지 빌드
     - name: docker image build

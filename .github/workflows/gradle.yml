@@ -35,7 +35,9 @@ jobs:
 
     # Gradle test를 실행한다
     - name: Test with Gradle
-      run: ./gradlew --info test
+      run: |
+        chmod +w ./gradlew
+        ./gradlew --info test
 
     - name: Build with Gradle Wrapper
       run: ./gradlew build

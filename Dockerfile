@@ -12,4 +12,7 @@ COPY build/libs/*.jar app.jar
 EXPOSE 8080
 
 # Define the command to run the application
+# - java 로 치면 진입점(main)인 부분을 적어준다.
+# java : 실행파일
+# 이후는 옵션으로 사용, 분리는 ',' 를 사용
 ENTRYPOINT ["java", "-jar", "app.jar"]
